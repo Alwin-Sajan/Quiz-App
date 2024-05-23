@@ -1,0 +1,39 @@
+*{
+  box-sizing: border-box;
+}
+body{
+  background-color: rgb(255, 223, 41);
+}
+.Main{
+  width: 92%;
+  height: auto;
+  display: block;
+  /* background-color: aqua; */
+  margin: 4%;
+  /* padding: 16px; */
+
+}
+.Main h1{
+  margin: 20px;
+}
+.qs{
+  /* display:inline-flex; */
+  margin:140px 20px 20px 20px;
+  height: 52vh;
+  /* width: 80vw; */
+  border-radius: 24px;
+  /* border: 4px double solid beige; */
+  padding: 20px;
+  color: rgb(255, 223, 41);
+  background-color: black;
+}
+img#lofiimg{
+  float: right;
+  margin: -87px -20px;
+
+  height: 52vh;
+  border-radius:0  20px 20px 40px;
+}
+h2{
+  color: white;
+}
