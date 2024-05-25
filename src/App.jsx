@@ -18,15 +18,21 @@ const App = () => {
       <div className="Main">
         <h1>QUIZ APP</h1>
         <div className="qs">
-          <h2>Question: {cData[0].question} </h2>
-          <p>
+          <h2>Question : {cData[0].question} </h2>
+          <div className='ans'>
+          
             
-          { cData[0].answer}{ cData[0].question_type }
+          <h3>{ cData[0].answer}</h3>
+          
+          </div>  
+          <p className='qtyp'>
+            { cData[0].question_type }
+
           </p>
-              
               
           {/* <img src="lodoimg" id="lofiimg" alt="lofiimages" /> */}
         </div>
+        <button>Next</button>
       </div>
     </div>
   )
