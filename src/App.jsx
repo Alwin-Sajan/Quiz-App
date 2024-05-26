@@ -1,61 +1,53 @@
-import React from 'react'
+import React, { useState } from 'react';
 // import lodoimg from 'Quiz-App/src/assets/lofi.jpg'
-import { cData } from './/assets/data'
-// import {TeamCard} from '@/assets'
-import './App.css'
-const App = () => {
-  // const cData = [
-  //   {
-  //         question: "How many days do we have in a week?",
-  //         answer: "Seven",
-  //         question_type: "General Knowledge For Kids"
-  //       }
-  //     ];
-  
-  
-  let cdv = 0; 
-  let datq = cData[cdv];
-  // button.addEventListener("click", myFunction);
-  const shoot = () => {
-     cdv++;
-    alert(cdv);
-    let datq = cData[cdv];
+import { cData } from './assets/data';
+// import { TeamCard } from '@/assets';
+import './App.css';
 
-    render(<App/>);
-  }
-  // const root = ReactDOM.createRoot(document.getElementById('main'));
-  // root.render(<App />);
+const App = () => {
+  // Initial state setup
+  const [cdv, setCdv] = useState(0);
+  const [datq, setDatq] = useState(cData[0]);
+
+  const shoot = () => {
+    let newCdv = cdv + 1;
+    if (newCdv >= cData.length) {
+      newCdv = 0; // Restart from the beginning if we've reached the end
+    }
+    setCdv(newCdv);
+    setDatq(cData[newCdv]);
+  };
+
+  const reshoot = () => {
+    let newCdv = cdv - 1;
+    if (newCdv < 0) {
+      newCdv = cData.length - 1; // Wrap around to the last question if we go below 0
+    }
+    setCdv(newCdv);
+    setDatq(cData[newCdv]);
+  };
 
   return (
     <div>
       <div className="Main">
         <h1>QUIZ APP</h1>
         <div className="qs">
-
           <h2>
-            Question : {datq.question} 
+            Question: {datq.question}
           </h2>
-
           <div className='ans'>
-
-
-            <h3>
-              {datq.answer}
-            </h3>
-
+            <h3>{datq.answer}</h3>
           </div>
           <p className='qtyp'>
-            {datq.question_type}
-
+           Level : {datq.question_type}
           </p>
-
           {/* <img src="lodoimg" id="lofiimg" alt="lofiimages" /> */}
         </div>
-        <button onClick={shoot}>Take the Shot!</button>
-        
+        <button id='butprev' onClick={reshoot}>Previous Question</button>
+        <button id='butnext' onClick={shoot}>Next Question</button>
       </div>
     </div>
-  )
+  );
 };
 
-export default App
+export default App;
