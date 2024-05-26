@@ -8,6 +8,7 @@ const App = () => {
   // Initial state setup
   const [cdv, setCdv] = useState(0);
   const [datq, setDatq] = useState(cData[0]);
+  const [showAnswer, setShowAnswer] = useState(false);
 
   const shoot = () => {
     let newCdv = cdv + 1;
@@ -16,6 +17,7 @@ const App = () => {
     }
     setCdv(newCdv);
     setDatq(cData[newCdv]);
+    setShowAnswer(false); // Hide answer when moving to the next question
   };
 
   const reshoot = () => {
@@ -25,6 +27,11 @@ const App = () => {
     }
     setCdv(newCdv);
     setDatq(cData[newCdv]);
+    setShowAnswer(false); // Hide answer when moving to the previous question
+  };
+
+  const showAns = () => {
+    setShowAnswer(true);
   };
 
   return (
@@ -35,11 +42,15 @@ const App = () => {
           <h2>
             Question: {datq.question}
           </h2>
-          <div className='ans'>
-            <h3>{datq.answer}</h3>
+          <div className='ans' id="ans">
+            {showAnswer ? (
+              <h3>{datq.answer}</h3>
+            ) : (
+              <button onClick={showAns}>Show Answer</button>
+            )}
           </div>
           <p className='qtyp'>
-           Level : {datq.question_type}
+           Level: {datq.question_type}
           </p>
           {/* <img src="lodoimg" id="lofiimg" alt="lofiimages" /> */}
         </div>
