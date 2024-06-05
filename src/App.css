@@ -89,5 +89,14 @@ h2{
 @media(max-width :480px)  {
   .Main{
     margin: 1%;
+    width: 100%;
+  }
+  body{
+    margin: 0;
+  }
+  #butnext,#butprev{
+    width: 80%;
+    margin-left: 30px;
+
   }
 }
