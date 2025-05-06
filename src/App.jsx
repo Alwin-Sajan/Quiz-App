@@ -6,6 +6,7 @@ import './App.css';
 
 const App = () => {
   // Initial state setup
+  const [loaded,setLoaded] = useState(false);
   const [cdv, setCdv] = useState(0);
   const [datq, setDatq] = useState(cData[0]);
   const [showAnswer, setShowAnswer] = useState(false);
@@ -35,7 +36,19 @@ const App = () => {
   };
 
   return (
-    <div>
+    <div>{!loaded?
+      <div className="container">
+      <h1>QUIZ APP</h1>
+      {/* <label htmlFor="name">Name</label> */}
+      <input type="text" id='name_label' placeholder='Name'/>
+        <a href="#" className="button type--A">
+          <div className="button__line"></div>
+          <div className="button__line"></div>
+          <button  onClick={()=>{setLoaded(true)}} type='submit' className="button__text">ENTRY</button>
+          <div className="button__drow1"></div>
+          <div className="button__drow2"></div>
+        </a>
+      </div>:
       <div className="Main">
         <h1>QUIZ APP</h1>
         <div className="qs">
@@ -50,13 +63,13 @@ const App = () => {
             )}
           </div>
           <p className='qtyp'>
-           Level: {datq.question_type}
+            Level: {datq.question_type}
           </p>
           {/* <img src="lodoimg" id="lofiimg" alt="lofiimages" /> */}
         </div>
         <button id='butprev' onClick={reshoot}>Previous Question</button>
         <button id='butnext' onClick={shoot}>Next Question</button>
-      </div>
+      </div>}
     </div>
   );
 };
